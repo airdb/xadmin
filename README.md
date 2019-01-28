@@ -5,6 +5,7 @@ npm install less
 npm install less-loader
 npm install vue-loader
 npm install vue-router
+npm install vuex axios iview js-cookie
 
 ## Project setup
 ```

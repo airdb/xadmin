@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import test from '@/components/test'
 import transfer from '@/components/transfer'
 import tree from '@/components/tree'
 import newtree from '@/components/newtree'
@@ -21,6 +20,7 @@ import edit from '@/views/forum/edit'
 import article from '@/views/forum/article'
 
 // user
+import test from '@/views/test'
 import userInfo from '@/views/user/userInfo'
 
 Vue.use(Router)
@@ -42,7 +42,6 @@ export default new Router({
 
     { meta: { title: 'root     | airdb.com' }, path: '/servicetree', name: 'servicetree', component: root },
     { meta: { title: 'admin    | airdb.com' }, path: '/admin', name: 'test', component: test },
-    { meta: { title: 'Test     | airdb.com' }, path: '/test', name: 'test', component: test },
     { meta: { title: 'Tree     | airdb.com' }, path: '/tree', name: 'Hello Ztree', component: tree },
     { meta: { title: 'New Tree | airdb.com' }, path: '/newtree', name: 'newtree', component: newtree },
     { meta: { title: 'nav menu | airdb.com' }, path: '/navmenu', name: 'Hello nav menu', component: navmenu },

@@ -17,8 +17,8 @@ export default {
    * @description api请求基础路径
    */
   baseUrl: {
-    dev: 'https://mina.baobeihuijia.com/test/lastest/webapi',
-    pro: 'https://mina.baobeihuijia.com/test/lastest/webapi'
+    dev: 'https://mina.baobeihuijia.com/test/lastest/',
+    pro: 'https://mina.baobeihuijia.com/test/lastest/'
   },
   /**
    * @description 默认打开的首页的路由name值，默认为home
