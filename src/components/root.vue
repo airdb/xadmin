@@ -1,0 +1,322 @@
+<template>
+  <el-container>
+    <!-- 左侧全为aside -->
+    <el-aside class="el-aside"  width="320px" >
+      <img src="/static/images/logo/wego.png">
+      <div class="tree">
+        <el-input class="source" placeholder="Filter" v-model="filterText">
+        </el-input>
+        <el-button type="primary" icon="el-icon-search">Search</el-button>
+        <el-tree class="filter-tree" :data="data2" :props="defaultProps" default-expand-all :filter-node-method="filterNode" ref="tree2">
+          <span class="custom-tree-node" slot-scope="{ node, data }">
+            <span>{{ node.label }}</span>
+          </span>
+        </el-tree>
+      </div>
+    </el-aside>
+
+    
+    <!-- 右侧全为container-->
+    <el-container>
+      <el-header height=100px direction="horizontal">
+        <div id="root" class="bbb" >
+          <el-menu :default-active="activeIndex" background-color="#ddd" active-text-color="#eee" mode="horizontal" class="aaa" @select="handleSelect">
+            <el-menu-item index="1">Home</el-menu-item>
+            <el-menu-item index="2">Services</el-menu-item>
+            <el-menu-item index="3">Monitor</el-menu-item>
+            <el-menu-item index="4">Travis-CI</el-menu-item>
+            <el-menu-item index="5">Depoly</el-menu-item>
+            <el-menu-item index="7">About</el-menu-item>
+            <el-menu-item index="8">
+              <el-button type="primary" icon="el-icon-circle-plus">添加</el-button>
+            </el-menu-item>
+          </el-menu>
+        </div>
+      </el-header>
+
+      <el-main>
+      <el-breadcrumb separator-class="el-icon-arrow-right">
+        <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+        <el-breadcrumb-item>服务树</el-breadcrumb-item>
+        <el-breadcrumb-item>api-web</el-breadcrumb-item>
+        <el-breadcrumb-item>华北节点</el-breadcrumb-item>
+      </el-breadcrumb>
+      <el-table ref="multipleTable" :data="tableData3" tooltip-effect="dark" style="width: 100%; line-height: 10px" @selection-change="handleSelectionChange">
+        <el-table-column type="selection" width="55">
+        </el-table-column>
+        <el-table-column prop="name" label="实例ID" width="80"> </el-table-column>
+        <el-table-column prop="serviceinstance" label="实例名" show-overflow-tooltip> </el-table-column>
+        <el-table-column prop="servicetype" label="实例类型" show-overflow-tooltip> </el-table-column>
+        <el-table-column prop="innerip" label="IP" show-overflow-tooltip> </el-table-column>
+        <el-table-column prop="mainport" label="端口" show-overflow-tooltip> </el-table-column>
+        <el-table-column prop="workpath" label="部署路径" show-overflow-tooltip> </el-table-column>
+        <el-table-column prop="status" label="状态" show-overflow-tooltip> </el-table-column>
+        <el-table-column prop="tags" label="Key-Value标签" show-overflow-tooltip> </el-table-column>
+        <el-table-column label="变更时间" width="120">
+          <template slot-scope="scope">{{ scope.row.date }}</template>
+        </el-table-column>
+        <el-table-column label="操作" fixed="right" >
+          <template slot-scope="scope">
+            <el-button
+              size="mini"
+              @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+            <el-button
+              size="mini"
+              type="danger"
+              @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+          </template>
+        </el-table-column>
+      </el-table>
+      </el-main>
+      <el-footer>
+        <div class="block">
+          <el-pagination
+            @size-change="handleSizeChange"
+            @current-change="handleCurrentChange"
+            :current-page="currentPage4"
+            :page-sizes="[100, 200, 300, 400]"
+            :page-size="100"
+            layout="total, sizes, prev, pager, next, jumper"
+            :total="400">
+          </el-pagination>
+        </div>
+      </el-footer>
+    </el-container>
+  </el-container>
+</template>
+
+
+<script>
+  export default {
+    watch: {
+      filterText (val) {
+        this.$refs.tree2.filter(val)
+      }
+    },
+
+    data () {
+      return {
+        activeIndex: '1',
+        activeIndex2: '1',
+        filterText: '',
+        currentPage1: 5,
+        currentPage2: 5,
+        currentPage3: 5,
+        currentPage4: 4,
+        tableData3: [{
+          date: '2016-05-03',
+          name: '1',
+          innerip: '10.10.10.10',
+          mainport: '80;8080',
+          workpath: '/srv/apiweb/',
+          status: 'online',
+          tags: 'foo=air;bar=db',
+          servicetype: 'machine',
+          serviceinstance: 'instance1.hd.cmdb.airdb.io.'
+        }, {
+          date: '2016-05-02',
+          name: '2',
+          innerip: '10.10.10.10',
+          mainport: '80',
+          workpath: '/srv/apiweb/',
+          status: 'ready',
+          tags: 'foo=air;bar=db',
+          servicetype: 'vm',
+          serviceinstance: 'instance2.hd.cmdb.airdb.io.'
+        }, {
+          date: '2016-05-04',
+          name: '3',
+          innerip: '10.10.10.10',
+          mainport: '80',
+          workpath: '/srv/apiweb/',
+          status: 'breakdown',
+          tags: 'foo=air;bar=db',
+          servicetype: 'vm',
+          serviceinstance: 'instance3.hd.cmdb.airdb.io.'
+        }, {
+          date: '2016-05-01',
+          name: '4',
+          innerip: '10.10.10.10',
+          mainport: '80',
+          workpath: '/srv/apiweb/',
+          status: 'offline',
+          tags: 'foo=air;bar=db',
+          servicetype: 'docker',
+          serviceinstance: 'instance4.hd.cmdb.airdb.io.'
+        }, {
+          date: '2016-05-08',
+          name: '5',
+          innerip: '10.10.10.10',
+          mainport: '80',
+          workpath: '/srv/apiweb/',
+          status: 'disable',
+          tags: 'foo=air;bar=db',
+          servicetype: 'machine',
+          serviceinstance: 'instance5.hd.cmdb.airdb.io.'
+        }, {
+          date: '2016-05-06',
+          name: '6',
+          innerip: '10.10.10.10',
+          mainport: '80',
+          workpath: '/srv/apiweb/',
+          status: 'online',
+          tags: 'foo=air;bar=db',
+          servicetype: 'docker',
+          serviceinstance: 'instance6.hd.cmdb.airdb.io.'
+        }, {
+          date: '2016-05-07',
+          name: '7',
+          innerip: '10.100.100.1',
+          mainport: '80',
+          workpath: '/srv/apiweb/',
+          status: 'online',
+          tags: 'foo=air;bar=db',
+          servicetype: 'docker',
+          serviceinstance: 'instance7.hd.cmdb.airdb.io.'
+        }],
+        multipleSelection: [],
+        // tree
+        data2: [{
+          id: 1,
+          label: '创世节点',
+          children: [{
+            id: 3,
+            label: '二级 2-1 亚洲',
+            children: [{
+              id: 4,
+              label: '三级 3-1-1 日本'
+            }, {
+              id: 5,
+              label: '三级 3-1-2 中国大陆',
+              disabled: false,
+              children: [{
+                id: 6,
+                label: '四级 4-1-2 华东',
+                disabled: false,
+                children: [{
+                  id: 7,
+                  label: '五级 5-1-1 华东A区',
+                  disabled: false
+                }]
+              }]
+            }]
+          }]
+        }],
+        defaultProps: {
+          children: 'children',
+          label: 'label'
+        }
+      }
+    },
+    methods: {
+      handleSizeChange (val) {
+        console.log(`每页 ${val} 条`)
+      },
+      handleCurrentChange (val) {
+        console.log(`当前页: ${val}`)
+      },
+      handleSelect (key, keyPath) {
+        console.log(key, keyPath)
+      },
+      checkLogin () {
+        if (!this.getCookie('session')) {
+          this.$router.push('/login')
+        }
+      },
+      filterNode (value, data) {
+        if (!value) return true
+        return data.label.indexOf(value) !== -1
+      },
+      // 内容
+      toggleSelection (rows) {
+        if (rows) {
+          rows.forEach(row => {
+            this.$refs.multipleTable.toggleRowSelection(row)
+          })
+        } else {
+          this.$refs.multipleTable.clearSelection()
+        }
+      },
+      handleSelectionChange (val) {
+        this.multipleSelection = val
+      }
+    }
+  }
+</script>
+
+<style>
+  .el-header, {
+    width: 100%;
+    align: left;
+    background-color: #E9EEF3;
+    color: #333;
+    text-align: center;
+    line-height: 60px;
+  }
+
+  .el-footer {
+    width: 100%;
+    background-color: #E9EEF3;
+    color: #333;
+    vertical-align: top;
+    text-align: right;
+    //line-height: 60px;
+  }
+  
+  .el-aside {
+    background-color: #D3DCE6;
+    color: #333;
+    text-align: center;
+    //line-height: 60px;
+  }
+  
+  .el-main {
+    background-color: #E9EEF3;
+    color: #333;
+    //text-align: left;
+    //line-height: 600px;
+  }
+  
+  body > .el-container {
+     margin-bottom: 40px;
+  }
+  
+  .el-menu-item {
+     font-size: 20px;
+     font-weight:bold;
+  }
+
+  .el-menu-vertical-demo:not(.el-menu--collapse) {
+    width: 200px;
+    min-height: 400px;
+  }
+
+  #root {
+    width: 100%;
+    padding: 0;
+    background-color: #fff;
+    //margin:left;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  
+  .aaa {
+      border-radius: 8px;
+  }
+
+  .tree {
+      top : 0;
+      heigth: 10px;
+      font-size: 20px;
+      font-weight:bold;
+  }
+.el-input {
+    position: relative;
+    font-size: 14px;
+    display: inline-block;
+    width: 60%;
+    line-height: 50px;
+    border-radius: 10px;
+}
+</style>

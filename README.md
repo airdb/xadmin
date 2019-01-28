@@ -1,5 +1,11 @@
 # fcweb
 
+npm install -g @vue/cli
+npm install less
+npm install less-loader
+npm install vue-loader
+npm install vue-router
+
 ## Project setup
 ```
 npm install
