@@ -19,7 +19,8 @@ export default {
         try {
           getArticleList(state.token).then(res => {
             const data = res.data
-            commit('setBabyid', data.Babyid)
+            window.console.log('=======', data[0].Babyid)
+            commit('setBabyid', data[0].Babyid)
             resolve(data)
           }).catch(err => {
             reject(err)

@@ -2,6 +2,7 @@
   <div class="block">
     <span class="demonstration">完整功能</span>
     {{ msg }}
+    {{ emsg }}
   </div>
 </template>
 
@@ -13,7 +14,7 @@
       return {
         currentPage4: 4,
         msg: 'init',
-        emsg: 'init'
+        emsg: store.state.Babyid
       }
     },
     methods: {
@@ -24,6 +25,7 @@
     created () {
       store.dispatch('data/getArticleList').then(res => {
         this.msg = res[0]
+        window.console.log('==========', this.msg)
       })
     }
   }
