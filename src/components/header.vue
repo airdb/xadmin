@@ -32,7 +32,7 @@
     </div>
     <!-- container end -->
 
-    <div v-if="isLogin = true">
+    <div v-if="isLogin == true">
       <img src="../assets/userImg.jpg" class="round_icon" alt="" @click="toUserInfo">
     </div>
     <div class="" v-else>
