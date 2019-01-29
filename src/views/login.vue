@@ -92,7 +92,7 @@ export default {
       status: -1,
       token: 'defualt',
       msg: 'Welcome to signin, https://aws.airdb.io/lambda/test',
-      loginImg: '../images/home2.jpg',
+      loginImg: '/static/images/home2.jpg',
       chosenTab: 1
     }
   },
@@ -100,16 +100,16 @@ export default {
     login: function (event) {
       this.$http.get(this.apiurl).then((response) => {
         // 响应成功回调
-        console.log(response.data)
-        console.log(response.data.status)
+        window.console.log(response.data)
+        window.console.log(response.data.status)
         this.status = response.data.status
         this.username = response.body.token
         // this.password = response.token
         // this.message = response.body.message
         this.$session.start()
-        console.log('=====', this.$session.id())
+        window.console.log('=====', this.$session.id())
         this.$session.set('username', this.password)
-        console.log('=====', this.$session.getAll())
+        window.console.log('=====', this.$session.getAll())
         this.username = this.$session.get('username')
         this.stauts = 0
         // alert(this.username, this)
@@ -117,7 +117,7 @@ export default {
         this.$router.push('/')
       }, (response) => {
         // 响应错误回调
-        console.log('fail!!!!')
+        window.console.log('fail!!!!', response)
         // this.result = 'fetch fail!!'
       })
       // alert(this.status)
