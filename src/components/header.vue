@@ -53,7 +53,7 @@ export default {
   data () {
     return {
       website: '网站首页',
-      isLogin: true,
+      isLogin: false,
       items: [
         {name: '分类1', url: '/'},
         {name: '分类2', url: '/'},
