@@ -86,13 +86,13 @@
     },
     methods: {
       handleSizeChange (val) {
-        console.log(`每页 ${val} 条`)
+        window.console.log(`每页 ${val} 条`)
       },
       handleCurrentChange (val) {
-        console.log(`当前页: ${val}`)
+        window.console.log(`当前页: ${val}`)
       },
       handleSelect (key, keyPath) {
-        console.log(key, keyPath)
+        window.console.log(key, keyPath)
       },
       checkLogin () {
         if (!this.getCookie('session')) {

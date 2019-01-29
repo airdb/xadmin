@@ -12,7 +12,7 @@ import Main from '@/components/Main'
 
 // main
 import home from '@/views/home'
-import login from '@/views/login'
+import login from '@/views/login/login'
 
 // forum
 import forum from '@/views/forum/forum'
