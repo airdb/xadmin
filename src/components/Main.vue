@@ -4,31 +4,31 @@ body {font-family: Helvetica, sans-serif;}
    width:20px;
    height:20px;
    display: inline-block;
-   background: url('../images/ztree/root.png') no-repeat center/100% auto;
+   background: url('/static/images/ztree/root.png') no-repeat center/100% auto;
 }
 .iconClassOrg {
    width:20px;
    height:20px;
    display: inline-block;
-   background: url('../images/ztree/org.png') no-repeat center/100% auto;
+   background: url('/static/images/ztree/org.png') no-repeat center/100% auto;
 }
 .iconClassSystem {
    width:20px;
    height:20px;
    display: inline-block;
-   background: url('../images/ztree/system.png') no-repeat center/100% auto;
+   background: url('/static/images/ztree/system.png') no-repeat center/100% auto;
 }
 .iconClassSubSystem {
    width:20px;
    height:20px;
    display: inline-block;
-   background: url('../images/ztree/subsystem.png') no-repeat center/100% auto;
+   background: url('/static/images/ztree/subsystem.png') no-repeat center/100% auto;
 }
 .iconClassService {
    width:20px;
    height:20px;
    display: inline-block;
-   background: url('../images/ztree/service.png') no-repeat center/100% auto;
+   background: url('/static/images/ztree/service.png') no-repeat center/100% auto;
 }
 .operate ul>li{
   float:left;
@@ -112,13 +112,13 @@ export default {
     fetchData () {
       this.$http.get(this.apiurl).then((response) => {
         // 响应成功回调
-        console.log(response.data)
+        window.console.log(response.data)
         this.result = response
         this.ztreeDataSourceJson = response.data
         this.message = response.body.message
       }, (response) => {
         // 响应错误回调
-        console.log('fail!!!!')
+        window.console.log('fail!!!!', response)
         this.result = 'fetch fail!!'
       })
     },
@@ -138,7 +138,7 @@ export default {
         })
         this.nodeModel.isFolder = true
       } else {
-        console.log('请先选中节点')
+        window.console.log('请先选中节点')
       }
     },
     // 删除节点
@@ -152,12 +152,12 @@ export default {
         }
         this.nodeModel = null
       } else {
-        console.log('请先选中节点')
+        window.console.log('请先选中节点')
       }
     },
     // 节点上移
     up: function () {
-      if (!this.nodeModel) console.log('请先选中节点')
+      if (!this.nodeModel) window.console.log('请先选中节点')
 
       if (this.parentNodeModel.hasOwnProperty('children')) {
         var index = this.parentNodeModel.children.indexOf(this.nodeModel)
@@ -176,7 +176,7 @@ export default {
     },
     // 节点下移
     down: function () {
-      if (!this.nodeModel) console.log('请先选中节点')
+      if (!this.nodeModel) window.console.log('请先选中节点')
 
       if (this.parentNodeModel.hasOwnProperty('children')) {
         var index = this.parentNodeModel.children.indexOf(this.nodeModel)
@@ -199,16 +199,16 @@ export default {
       this.nodeModel = m  // 当前点击节点对象
       this.parentNodeModel = parent // 当前点击节点父亲对象
 
-      console.log(m)
-      console.log(parent)
+      window.console.log(m)
+      window.console.log(parent)
     },
     // 右击事件
     contextmenuClick: function () {
-      console.log('触发了自定义的contextmenuClick事件')
+      window.console.log('触发了自定义的contextmenuClick事件')
     },
     // 点击展开收起
     expandClick: function (m) {
-      console.log(JSON.parse(JSON.stringify(m)))
+      window.console.log(JSON.parse(JSON.stringify(m)))
       // 点击异步加载
       if (m.isExpand) {
          // 动态加载子节点, 模拟ajax请求数据
