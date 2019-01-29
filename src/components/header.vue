@@ -10,13 +10,16 @@
             <router-link to="/forum" class="nav-link"> 论坛 </router-link>
           </li>
           <li class="nav-item">
-            <a href="https://www.airdb.com" class="nav-link"> 文档 </a>
+            <a href="/moments" class="nav-link"> 圈子 </a>
           </li>
           <li class="nav-item">
             <router-link to="/admin" class="nav-link"> 后台管理 </router-link>
           </li>
           <li class="nav-item">
             <router-link to="/about" class="nav-link"> About </router-link>
+          </li>
+          <li class="nav-item">
+            <a href="https://www.airdb.com" class="nav-link"> 文档 </a>
           </li>
         </ul>
         <!-- ul end -->
@@ -36,8 +39,7 @@
       <img src="../assets/userImg.jpg" class="round_icon" alt="" @click="toUserInfo">
     </div>
     <div class="" v-else>
-      <router-link to="/login" class="text-light px-3 d-inline-block" style="font-size: 13px"> 登陆 </router-link>
-      <router-link to="/signin" class="btn btn-primary btn-md rounded-0" style="font-size: 13px"> 注册 </router-link>
+      <router-link to="/login" class="btn btn-primary btn-md rounded-0" style="font-size: 13px"> 登陆 </router-link>
     </div>
     <!-- login end -->
     
@@ -51,6 +53,7 @@ export default {
   data () {
     return {
       website: '网站首页',
+      isLogin: true,
       items: [
         {name: '分类1', url: '/'},
         {name: '分类2', url: '/'},

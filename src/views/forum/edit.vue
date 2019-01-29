@@ -70,14 +70,14 @@ export default {
   },
   methods: {
     editorImgAdd (filename, file) {
-      console.log('======editorImgAdd() start======')
+      window.console.log('======editorImgAdd() start======', filename, file)
       // 上传图片
       // var formData = new FormData()
     },
     editorSave (value, render) {
-      console.log('======editorSave() start======')
+      window.console.log('======editorSave() start======', render)
       // 打印输入内容
-      console.log(value)
+      window.console.log(value)
       /* var fso = new ActiveXObject('Scripting.FileSystemObject')
       var file = fso.createtextfile('C:\\test.txt', true)
       file.write(value)
