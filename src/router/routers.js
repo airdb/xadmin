@@ -23,6 +23,9 @@ import article from '@/views/forum/article'
 import test from '@/views/test'
 import userInfo from '@/views/user/userInfo'
 
+// chatRoom
+import chatRoom from '@/views/test_dounine/chatRoom'
+
 Vue.use(Router)
 
 export default [
@@ -37,6 +40,9 @@ export default [
 
   // uer
   { meta: { title: 'User Info| airdb.com' }, path: '/user/userInfo', name: 'userInfo', component: userInfo },
+
+  // chatRoom
+  { meta: { title: 'Chat Room| airdb.com' }, path: '/chatRoom', name: 'chatRoom', component: chatRoom },
 
   { meta: { title: 'root     | airdb.com' }, path: '/servicetree', name: 'servicetree', component: root },
   { meta: { title: 'admin    | airdb.com' }, path: '/admin', name: 'test', component: test },
