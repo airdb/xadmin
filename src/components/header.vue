@@ -10,7 +10,7 @@
             <router-link to="/forum" class="nav-link"> 论坛 </router-link>
           </li>
           <li class="nav-item">
-            <router-link to=="/chatroom" class="nav-link"> 圈子 </a>
+            <router-link to="/chatroom" class="nav-link"> 圈子 </a>
           </li>
           <li class="nav-item">
             <router-link to="/admin" class="nav-link"> 后台管理 </router-link>
