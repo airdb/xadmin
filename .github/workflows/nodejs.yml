@@ -19,6 +19,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: npm install, build, and test
       run: |
+        env
         npm install -g @vue/cli
         npm install
         npm run build
