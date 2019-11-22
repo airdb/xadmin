@@ -24,7 +24,7 @@ jobs:
         npm run build
     - name: gh-pages
       run: |
-        cd bbs/
+        cd noahv
         git init
         git config user.name "airdb-bot"
         git config user.email "airdb-bot@airdb.com"
