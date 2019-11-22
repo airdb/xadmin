@@ -5,16 +5,16 @@
 export default {
     header: [
         {
-            label: '模板示例',
-            key: 'tplDemo',
+            label: '论坛数据',
+            key: 'bbs',
             children: [
                 {
-                    label: '表格示例',
-                    key: 'tableDemo',
-                    link: 'tableDemo'
+                    label: '分类信息',
+                    key: 'bbs/list',
+                    link: 'bbs/list'
                 },
                 {
-                    label: '表单示例',
+                    label: '信息',
                     key: 'formDemo',
                     link: 'formDemo'
                 },
@@ -60,6 +60,6 @@ export default {
         url: '/api/user',
         logout: '/api/logout'
     },
-    type: 'header',
+    type: 'header-siderbar',
     separator: '/'
 };
