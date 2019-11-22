@@ -26,7 +26,7 @@ jobs:
     - name: gh-pages
       run: |
         cd noahv
-        sed -i 's@/static/@/xadmin/@' index.html
+        sed -i 's@/static/@/xadmin/static/@' index.html
         git init
         git config user.name "airdb-bot"
         git config user.email "airdb-bot@airdb.com"
