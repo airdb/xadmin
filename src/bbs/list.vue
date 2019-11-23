@@ -1,10 +1,11 @@
 <template>
     <div class="table-demo">
         <NvTable
+			method="get"
             :columns="columns"
             :action="action"
             :pagination="pagination"
-            url="/api/demo/table/get"
+            url="https://mina.baobeihuijia.com/apis/bbs/v1/square/list"
             :rowSelect="true"
             :title="title"
             :tips="tips"
