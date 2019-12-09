@@ -29,7 +29,7 @@ export default {
             
         }
     },
-    created: function(){
+    mounted: function(){
         // console.log('document', window.document)
         document.getElementsByClassName("noahv-layout-breadcrumb")[0].style.display = "none"
         document.getElementsByClassName("noahv-layout-header")[0].style.display = "none"
