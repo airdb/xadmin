@@ -64,7 +64,7 @@ export default {
             // }else if(icon == 'slack') {
             //     window.location.href = baseUrl + 'oauth/v1/slack'
             // }
-            window.location.href = baseUrl + '/oauth/' + icon
+            window.location.href = baseUrl + '/oauth2/' + icon
         }
     }
 }
