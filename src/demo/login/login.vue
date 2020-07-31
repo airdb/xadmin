@@ -46,7 +46,7 @@ export default {
             // }).then(function(data){
             //     console.log('data--->', data)
             // })
-            let baseUrl = 'https://scf.baobeihuijia.com'
+            let baseUrl = 'https://scf.baobeihuijia.com/release'
             // if(icon == 'github') {
             //     window.location.href = baseUrl + 'oauth/v1/github'
             // }else if(icon == 'linkedin') {
