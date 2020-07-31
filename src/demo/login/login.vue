@@ -46,7 +46,7 @@ export default {
             // }).then(function(data){
             //     console.log('data--->', data)
             // })
-            let baseUrl = 'https://mina.baobeihuijia.com/'
+            let baseUrl = 'https://scf.baobeihuijia.com'
             // if(icon == 'github') {
             //     window.location.href = baseUrl + 'oauth/v1/github'
             // }else if(icon == 'linkedin') {
@@ -64,7 +64,7 @@ export default {
             // }else if(icon == 'slack') {
             //     window.location.href = baseUrl + 'oauth/v1/slack'
             // }
-            window.location.href = baseUrl + 'oauth/v1/' + icon
+            window.location.href = baseUrl + '/oauth/' + icon
         }
     }
 }
