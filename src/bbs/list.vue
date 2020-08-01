@@ -5,7 +5,7 @@
             :columns="columns"
             :action="action"
             :pagination="pagination"
-            url="https://mina.baobeihuijia.com/apis/bbs/v1/square/list"
+            url="https://scf.baobeihuijia.com/release/mina/info/list"
             :rowSelect="true"
             :title="title"
             :tips="tips"
