@@ -1,6 +1,7 @@
 {
     "env": {
         "browser": true,
+        "node": true,
         "es6": true
     },
     "extends": ["eslint:recommended","plugin:vue/base"],
@@ -55,7 +56,7 @@
         }],
         "func-call-spacing": ["error", "never"],
         "func-name-matching": "off",
-        "func-names": ["error", "always"],
+        "func-names": "off",
         "func-style": "off",
         "function-paren-newline": "off",
         "generator-star-spacing": ["error", {
@@ -198,7 +199,7 @@
         "no-use-before-define": ["error", {
             "variables": false,
             "classes": false,
-            "functions": true
+            "functions": false
         }],
         "no-useless-call": "warn",
         "no-useless-computed-key": "error",
@@ -206,7 +207,7 @@
         "no-useless-constructor": "error",
         "no-useless-rename": "error",
         "no-useless-return": "error",
-        "no-var": "error",
+        "no-var": "off",
         "no-void": "error",
         "no-warning-comments": "off",
         "no-whitespace-before-property": "warn",
@@ -295,7 +296,7 @@
         "react/jsx-pascal-case": "off",
         "no-empty": "error",
         "no-func-assign": "warn",
-        "no-unused-vars": "error",
+        "no-unused-vars": "off",
         "no-dupe-args": "error",
         "no-redeclare": "warn",
         "no-constant-condition": "error",
@@ -312,7 +313,7 @@
         "react/jsx-closing-bracket-location": "off",
         "react/jsx-first-prop-new-line": "off",
         "no-unreachable": "error",
-        "no-console": "error",
+        "no-console": "off",
         "no-cond-assign": "error",
         "no-const-assign": "error",
         "babel/object-curly-spacing": "off",
