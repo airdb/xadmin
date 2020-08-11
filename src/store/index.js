@@ -4,18 +4,20 @@
  *         darren(darrenywyu@gmail.com)
  */
 
-import Vue from 'vue';
-import Vuex from 'vuex';
-import {LOGIN, UPDATE_BASE_FLAG, UPDATE_USER_FLAG} from './mutation-types';
-import api from 'common/header';
+import Vue from "vue";
+import Vuex from "vuex";
+import { LOGIN, UPDATE_BASE_FLAG, UPDATE_USER_FLAG, UPDATE_TREE_ITEMS } from "./mutation-types";
+import api from "common/header";
+import { getTreeItems } from "../serivce/request";
 const VUE_INSTANCE = new Vue();
 
 Vue.use(Vuex);
 
 const state = {
-    username: 'guest',
+    username: "guest",
     baseDataReady: false,
-    userNameReady: false
+    userNameReady: false,
+    treeItems: [],
 };
 
 const mutations = {
@@ -27,14 +29,17 @@ const mutations = {
     },
     [UPDATE_BASE_FLAG](state, flag) {
         state.baseDataReady = flag;
-    }
+    },
+    [UPDATE_TREE_ITEMS](state, payload) {
+        state.treeItems = payload;
+    },
 };
 
 const actions = {
-    getUserName({commit, state}) {
-        // only request once
+    getUserName({ commit, state }) {
+    // only request once
         if (api.login.hasLogin && !state.userNameReady) {
-            if (api.login.url && api.login.url !== '') {
+            if (api.login.url && api.login.url !== "") {
                 VUE_INSTANCE.$request.post(api.login.url).then(response => {
                     if (!response.data.success) {
                         return;
@@ -49,18 +54,27 @@ const actions = {
         }
     },
     // 获取基础数据
-    getBaseData({commit}) {
+    getBaseData({ commit }) {
         let depInfo = [];
         return Promise.all(depInfo).then(() => {
             // 基础信息准备完成标识
             commit(UPDATE_BASE_FLAG, true);
         });
-    }
+    },
+
+    // 获取tree组件items
+    getTreeItems({ commit }) {
+        return getTreeItems().then((res) => {
+            let items = []
+            items.push(res.data)
+            commit(UPDATE_TREE_ITEMS, items);
+        });
+    },
 };
 
 export default new Vuex.Store({
     state: Object.assign({}, state),
     modules: Object.assign({}),
     actions: Object.assign({}, actions),
-    mutations: Object.assign({}, mutations)
+    mutations: Object.assign({}, mutations),
 });

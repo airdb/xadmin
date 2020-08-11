@@ -57,8 +57,8 @@ export default {
     },
     login: {
         hasLogin: true,
-        url: '/api/user',
-        logout: '/api/logout'
+        url: 'https://scf.baobeihuijia.com/release/oauth2/api/user',
+        logout: 'https://scf.baobeihuijia.com/release/oauth2/api/logout'
     },
     type: 'header-siderbar',
     separator: '/'
