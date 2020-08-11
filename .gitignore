@@ -71,6 +71,7 @@ Thumbs.db
 .vscode
 
 # build assets
+/noahv
 /output
 /dist
 /dll
