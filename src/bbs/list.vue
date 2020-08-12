@@ -115,7 +115,7 @@ export default {
                 {
                     title: '创建人',
                     key: 'person',
-                    link: 'https://www.baidu.com/s?wd={person}',
+                    link: 'https://github.com/{person}',
                     target: '_blank'
                 }
             ],
