@@ -11,12 +11,7 @@
         <div class="title">Sign In With</div>
         <div class="list">
             <img src="./images/github.png" class="list-item" data-icon="github" v-on:click="jump"/>
-            <img src="./images/in.png" class="list-item" data-icon="linkedin" v-on:click="jump"/>
-            <img src="./images/amazon.png" class="list-item" data-icon="amazon" v-on:click="jump"/>
-            <img src="./images/bitbucket.png" class="list-item" data-icon="bitbucket" v-on:click="jump"/>
-            <img src="./images/facebook.png" class="list-item" data-icon="facebook" v-on:click="jump"/>
             <img src="./images/google.png" class="list-item" data-icon="google" v-on:click="jump"/>
-            <img src="./images/slack.png" class="list-item" data-icon="slack" v-on:click="jump"/>
             <img src="./images/wechat.png" class="list-item" data-icon="wechat" v-on:click="jump"/>
         </div>
     </div>
