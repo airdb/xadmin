@@ -47,7 +47,7 @@ export default {
             linkTarget: 'https://baidu.github.io/NoahV/#/guide/about'
         }
     ],
-    hasBread: true,
+    hasBread: false,
     logo: {
         // 是否需要logo
         hasLogo: true,
@@ -60,6 +60,6 @@ export default {
         url: 'https://scf.baobeihuijia.com/release/oauth2/api/user',
         logout: 'https://scf.baobeihuijia.com/release/oauth2/api/logout'
     },
-    type: 'header-siderbar',
+    type: 'header',
     separator: '/'
 };

@@ -1,5 +1,6 @@
 <template>
     <div class="table-demo">
+        <Tree />
         <NvTable
 			method="get"
             :columns="columns"
@@ -14,8 +15,13 @@
 </template>
 
 <script>
+import Tree from './tree.vue'
+import './list.less'
 export default {
     name: 'TableDemo',
+    components: {
+        Tree,
+    }, 
     data() {
         return {
             title: '表格示例',
@@ -183,9 +189,3 @@ export default {
     }
 };
 </script>
-
-<style lang="less" >
-.table-demo {
-
-}
-</style>

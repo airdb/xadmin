@@ -22,7 +22,7 @@ import './common/hook/ajax';
 import './common/assets/css/main.less';
 
 // If wanted diy layout, please import this file
-// import layoutApp from './common/layout/layout';
+import layoutApp from './common/layout/layout';
 
 // keep this
 Vue.use(VueRouter);
@@ -40,7 +40,7 @@ Vue.use(noahvComponent);
 noahv.layout(headerConfig, footerApp);
 
 // If wanted diy layout, please use this line
-// noahv.useLayout(layoutApp);
+noahv.useLayout(layoutApp);
 
 // keep this
 noahv.router(routerConfig);

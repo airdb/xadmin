@@ -4,7 +4,6 @@
       :items="items"
       :search="search"
       :checkbox="checkbox"
-      :width="50"
       :editIcon="editIcon"
       @on-check-change="onCheckChangeHandler"
     ></NvTree>
