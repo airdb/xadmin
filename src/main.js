@@ -37,7 +37,7 @@ Vue.use(noahvRequest);
 Vue.use(noahvComponent);
 
 // use default layout with header config
-noahv.layout(headerConfig, footerApp);
+// noahv.layout(headerConfig, footerApp);
 
 // If wanted diy layout, please use this line
 noahv.useLayout(layoutApp);
