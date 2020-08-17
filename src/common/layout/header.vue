@@ -1,7 +1,8 @@
 <template>
   <div class="noahv-layout-header-inner">
     <div>
-      <!--TODO： <Logo :logo="logo"></Logo> -->
+       <!-- <Logo :logo="logo"></Logo> -->
+       <!-- <Logo></Logo> -->
       <Menu mode="horizontal" theme="dark" class="noahv-layout-nav">
         <MenuItem
           :name="item.key ? item.key : '|'"
@@ -21,19 +22,20 @@
 <script>
 import headerLink from "./header/headerLink";
 import Login from "./header/login";
-// import Logo from './logo';
+import Logo from './header/logo';
 
 export default {
   mounted() {
     console.log("header in header" + this.headerConf);
   },
-  props: ["headerConf"],
+  props: ["headerConf", "logo"],
   data() {
     return {};
   },
   components: {
     headerLink,
     Login,
+    Logo
   },
   computed: {
     header: () => {

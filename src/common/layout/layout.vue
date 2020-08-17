@@ -24,7 +24,7 @@ import NvFooter from "./footer.vue";
 import headerConfig from "../header";
 import Header from "./header.vue";
 import Tree from "../../bbs/tree";
-// import '../assets/css/header.less'
+
 export default {
   mounted() {
     this.headerConf = headerConfig;
