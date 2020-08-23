@@ -2,7 +2,7 @@
 <template>
   <div class="noahv-layout">
     <div class="noahv-layout-header">
-      <Header :headerConf="headerConf" />
+      <Header :header-conf="headerConf" />
     </div>
     <!-- pleas keep this node -->
     <div class="noahv-layout-content">
@@ -26,7 +26,7 @@ import Header from "./header.vue";
 import Tree from "../../bbs/tree";
 
 export default {
-  mounted() {
+  created() {
     this.headerConf = headerConfig;
   },
   components: {

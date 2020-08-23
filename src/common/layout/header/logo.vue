@@ -1,11 +1,22 @@
 <template>
-  <div class="icon-demo">
-    <nv-icon type="more-small" content="用户名" />
-    <i class="noahv-icon noahv-icon-more"></i>
-  </div>
+    <div class="noahv-layout-logo">
+        <template v-if="logo.hasLogo">
+            <template>
+                <a :href="logo.link || '/'">
+                    <img :src="logo.src" :title="logo.title" /></a>
+                </a>
+            </template>
+        </template>
+        <template v-else>
+            {{logo.title}}
+        </template>
+    </div>
 </template>
 <script>
-export default {};
+export default {
+    name: 'Logo',
+    props: ['logo']
+};
 </script>
 <style scoped>
 .icon-demo {

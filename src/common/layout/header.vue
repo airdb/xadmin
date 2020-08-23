@@ -1,20 +1,14 @@
 <template>
   <div class="noahv-layout-header-inner">
     <div>
-       <!-- <Logo :logo="logo"></Logo> -->
-       <!-- <Logo></Logo> -->
+      <Logo :logo="logo"></Logo>
+      <!-- <Logo></Logo> -->
       <Menu mode="horizontal" theme="dark" class="noahv-layout-nav">
-        <MenuItem
-          :name="item.key ? item.key : '|'"
-          :key="index"
-          v-for="(item, index) in this.headerConf.header"
-        >
-          <!--FIX: this.header doesn't work,, change this.headerConf to header -->
+        <MenuItem :name="item.key ? item.key : '|'" :key="index" v-for="(item, index) in header">
           <headerLink :item="item" :parent="null"></headerLink>
         </MenuItem>
       </Menu>
-      <Login :login="this.headerConf.login"></Login>
-      <!--FIX: change headerConf  to header.login -->
+      <Login :login="header.login"></Login>
     </div>
   </div>
 </template>
@@ -22,30 +16,28 @@
 <script>
 import headerLink from "./header/headerLink";
 import Login from "./header/login";
-import Logo from './header/logo';
+import Logo from "./header/logo";
 
 export default {
-  mounted() {
-    console.log("header in header" + this.headerConf);
-  },
-  props: ["headerConf", "logo"],
+  props: ["headerConf", "logo"], //or header-conf
   data() {
     return {};
   },
   components: {
     headerLink,
     Login,
-    Logo
+    Logo,
   },
   computed: {
-    header: () => {
-      return this.headerConf.header; // why doesn't work?
+    header() {
+      return this.headerConf.header;
     },
-  },
-  watch: {
-    headerConf(val, oldVal) {
-      if (val !== oldVal) alert(JSON.stringify(this.header));
-    },
+    logo() {
+      return this.headerConf.logo
+    }
   },
 };
+
+//https://stackoverflow.com/questions/49614574/vuejs-computed-is-not-working-with-props
+// v-bind props in parent component need to be kebab-case
 </script>
