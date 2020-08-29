@@ -17,6 +17,10 @@ export default [
         path: '/bbs/list'
     },
     {
+        component: r => require.ensure([], () => r(require('src/bbs/dashboard')), 'bbs/dashboard'),
+        path: '/bbs/dashboard'
+    },
+    {
         component: r => require.ensure([], () => r(require('src/demo/chart/trend')), 'demo/chart/trend'),
         path: '/demo/chart/trend'
     },

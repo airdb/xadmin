@@ -5,7 +5,7 @@
             :columns="columns"
             :action="action"
             :pagination="pagination"
-            url="https://scf.baobeihuijia.com/release/mina/info/list"
+            url="https://scf.baobeihuijia.com/release/xadmin/info/list"
             :rowSelect="true"
             :title="title"
             :tips="tips"
@@ -14,8 +14,11 @@
 </template>
 
 <script>
+import './list.less'
 export default {
     name: 'TableDemo',
+    components: {
+    }, 
     data() {
         return {
             title: '表格示例',
@@ -115,7 +118,7 @@ export default {
                 {
                     title: '创建人',
                     key: 'person',
-                    link: 'https://www.baidu.com/s?wd={person}',
+                    link: 'https://github.com/{person}',
                     target: '_blank'
                 }
             ],
@@ -183,9 +186,3 @@ export default {
     }
 };
 </script>
-
-<style lang="less" >
-.table-demo {
-
-}
-</style>
