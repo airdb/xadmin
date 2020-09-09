@@ -40,7 +40,8 @@ const actions = {
     // only request once
         if (api.login.hasLogin && !state.userNameReady) {
             if (api.login.url && api.login.url !== "") {
-                VUE_INSTANCE.$request.post(api.login.url, {
+		let data =  { 'timestap': 111 }
+                VUE_INSTANCE.$request.post(api.login.url, data, {
 			headers: {
         			'Authorization': "Bearer 8923890130813088103",
         			'cookie': 'ssosid=asdlkjasflkjsaflakjfljdasfa'
