@@ -41,13 +41,15 @@ const actions = {
         if (api.login.hasLogin && !state.userNameReady) {
             if (api.login.url && api.login.url !== "") {
 		let data =  { 'timestap': 111 }
-                VUE_INSTANCE.$request.post(api.login.url, data, {
-			headers: {
-        			'Authorization': "Bearer 8923890130813088103",
-        			'cookie': 'ssosid=asdlkjasflkjsaflakjfljdasfa'
-    			},
-    			credentials: 'bbhj.airdb.com'
-		}).then(response => {
+		let headers = {
+			'Content-Type': 'application/json;charset=utf-8'
+		}
+
+		headers['Authorization'] = "Bearer 8923890130813088103"
+		headers['cookie'] = 'ssosid=asdlkjasflkjsaflakjfljdasfa'
+		headers['credentials'] = 'bbhj.airdb.com'
+
+                VUE_INSTANCE.$request.post(api.login.url, data, { headers: headers}).then(response => {
                     if (!response.data.success) {
                         return;
                     }
