@@ -40,7 +40,16 @@ const actions = {
     // only request once
         if (api.login.hasLogin && !state.userNameReady) {
             if (api.login.url && api.login.url !== "") {
-                VUE_INSTANCE.$request.post(api.login.url).then(response => {
+		let data =  { 'timestap': 111 }
+		let headers = {
+			'Content-Type': 'application/json;charset=utf-8'
+		}
+
+		headers['Authorization'] = "Bearer 8923890130813088103"
+		headers['cookie'] = 'ssosid=asdlkjasflkjsaflakjfljdasfa'
+		headers['credentials'] = 'bbhj.airdb.com'
+
+                VUE_INSTANCE.$request.post(api.login.url, data, { headers: headers}).then(response => {
                     if (!response.data.success) {
                         return;
                     }

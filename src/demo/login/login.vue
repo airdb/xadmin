@@ -11,8 +11,10 @@
     <div class="title">Sign In With</div>
     <div class="list">
       <img src="./images/github.png" class="list-item" data-icon="github" v-on:click="jump" />
+      <!--
       <img src="./images/google.png" class="list-item" data-icon="google" v-on:click="jump" />
       <img src="./images/wechat.png" class="list-item" data-icon="wechat" v-on:click="jump" />
+      -->
     </div>
   </div>
 </template>
@@ -34,32 +36,8 @@ export default {
     jump: function (e) {
       console.log("e--->", e.target.dataset.icon);
       let icon = e.target.dataset.icon;
-      // this.$request({
-      //     url: 'https://www.jianshu.com/shakespeare/v2/notes/7baa3d4a1e9c/book',
-      //     method: 'get',
-      //     data: {},
-      //     showLoading: true
-      // }).then(function(data){
-      //     console.log('data--->', data)
-      // })
+
       let baseUrl = "https://bbhj.airdb.com/release";
-      // if(icon == 'github') {
-      //     window.location.href = baseUrl + 'oauth/v1/github'
-      // }else if(icon == 'linkedin') {
-      //     window.location.href = baseUrl + 'oauth/v1/linkedin'
-      // }else if(icon == 'wechat') {
-      //     window.location.href = baseUrl + 'oauth/v1/wechat'
-      // }else if(icon == 'google') {
-      //     window.location.href = baseUrl + 'oauth/v1/google'
-      // }else if(icon == 'facebook') {
-      //     window.location.href = baseUrl + 'oauth/v1/facebook'
-      // }else if(icon == 'bitbucket') {
-      //     window.location.href = baseUrl + 'oauth/v1/bitbucket'
-      // }else if(icon == 'amazon') {
-      //     window.location.href = baseUrl + 'oauth/v1/amazon'
-      // }else if(icon == 'slack') {
-      //     window.location.href = baseUrl + 'oauth/v1/slack'
-      // }
       window.location.href = baseUrl + "/oauth2/" + icon;
     },
   },
