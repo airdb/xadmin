@@ -37,7 +37,7 @@ export default {
       console.log("e--->", e.target.dataset.icon);
       let icon = e.target.dataset.icon;
 
-      let baseUrl = "https://bbhj.airdb.com/release";
+      let baseUrl = "https://bbhj.airdb.io/release";
       window.location.href = baseUrl + "/oauth2/" + icon;
     },
   },

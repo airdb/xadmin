@@ -47,7 +47,7 @@ const actions = {
 
 		headers['Authorization'] = "Bearer 8923890130813088103"
 		headers['cookie'] = 'ssosid=asdlkjasflkjsaflakjfljdasfa'
-		headers['credentials'] = 'bbhj.airdb.com'
+		headers['credentials'] = 'bbhj.airdb.io'
 
                 VUE_INSTANCE.$request.post(api.login.url, data, { headers: headers}).then(response => {
                     if (!response.data.success) {
