@@ -7,4 +7,5 @@ export const LOGIN = 'LOGIN';
 export const UPDATE_BASE_FLAG = 'UPDATE_BASE_FLAG';
 export const UPDATE_USER_FLAG = 'UPDATE_USER_FLAG';
 export const UPDATE_TREE_ITEMS = 'UPDATE_TREE_ITEMS'
+export const UPDATE_TOKEN = 'UPDATE_TOKEN'
 

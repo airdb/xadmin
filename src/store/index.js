@@ -6,7 +6,7 @@
 
 import Vue from "vue";
 import Vuex from "vuex";
-import { LOGIN, UPDATE_BASE_FLAG, UPDATE_USER_FLAG, UPDATE_TREE_ITEMS } from "./mutation-types";
+import { LOGIN, UPDATE_BASE_FLAG, UPDATE_USER_FLAG, UPDATE_TREE_ITEMS, UPDATE_TOKEN } from "./mutation-types";
 import api from "common/header";
 import { getTreeItems } from "../serivce/request";
 const VUE_INSTANCE = new Vue();
@@ -18,6 +18,7 @@ const state = {
     baseDataReady: false,
     userNameReady: false,
     treeItems: [],
+    token: ''
 };
 
 const mutations = {
@@ -33,6 +34,9 @@ const mutations = {
     [UPDATE_TREE_ITEMS](state, payload) {
         state.treeItems = payload;
     },
+    [UPDATE_TOKEN](state, payload) {
+        state.token = payload
+    }
 };
 
 const actions = {
@@ -78,7 +82,7 @@ const actions = {
             items.push(res.data)
             commit(UPDATE_TREE_ITEMS, items);
         });
-    },
+    }
 };
 
 export default new Vuex.Store({
