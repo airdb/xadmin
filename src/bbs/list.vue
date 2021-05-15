@@ -5,7 +5,7 @@
             :columns="columns"
             :action="action"
             :pagination="pagination"
-            url="https://scf.baobeihuijia.com/release/xadmin/info/list"
+            url="https://scf.baobeihuijia.com/test/airdb/v1/noah/list"
             :rowSelect="true"
             :title="title"
             :tips="tips"

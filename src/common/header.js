@@ -58,8 +58,8 @@ export default {
     },
     login: {
         hasLogin: true,
-        url: "https://bbhj.airdb.io/release/oauth2/api/user",
-        logout: "https://bbhj.airdb.io/release/oauth2/api/logout"
+        url: "https://scf.baobeihuijia.com/test/airdb/v1/noah/user",
+        logout: "https://scf.baobeihuijia.com/test/airdb/v1/noah/user"
     },
     type: "header",
     separator: "/"
