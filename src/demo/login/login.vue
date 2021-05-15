@@ -19,6 +19,8 @@
   </div>
 </template>
 <script>
+import axios from 'axios'
+import { UPDATE_TOKEN } from '../../store/mutation-types'
 export default {
   name: "login",
   data() {
@@ -33,12 +35,18 @@ export default {
       "none";
   },
   methods: {
-    jump: function (e) {
+    jump: async function (e) {
       console.log("e--->", e.target.dataset.icon);
-      let icon = e.target.dataset.icon;
+      
+      const res = await axios.get('https://bbhj.airdb.io/test/oauth2/token')
+      console.log('res--->', res)
+      let token = res.data.token
+      this.$store.commit(UPDATE_TOKEN, token)
 
+      let icon = e.target.dataset.icon;
       let baseUrl = "https://bbhj.airdb.io/release";
       window.location.href = baseUrl + "/oauth2/" + icon;
+      
     },
   },
 };
