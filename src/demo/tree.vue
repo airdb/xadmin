@@ -1,13 +1,6 @@
 <template>
     <div>
-        <NvTree
-            :items="items"
-            :search="search"
-            :checkbox="checkbox"
-            @on-check-change="onCheckChangeHandler"
-            :width="300"
-        >
-        </NvTree>
+        <NvTree :items="items" :search="search" :checkbox="checkbox" @on-check-change="onCheckChangeHandler"></NvTree>
     </div>
 </template>
 

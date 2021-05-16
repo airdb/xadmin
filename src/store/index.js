@@ -6,8 +6,10 @@
 
 import Vue from 'vue';
 import Vuex from 'vuex';
-import {LOGIN, UPDATE_BASE_FLAG, UPDATE_USER_FLAG} from './mutation-types';
+import {LOGIN, UPDATE_BASE_FLAG, UPDATE_USER_FLAG, UPDATE_TREE_ITEMS} from './mutation-types';
 import api from 'common/header';
+import { getTreeItems } from "common/hook/ajax";
+
 const VUE_INSTANCE = new Vue();
 
 Vue.use(Vuex);
@@ -27,6 +29,9 @@ const mutations = {
     },
     [UPDATE_BASE_FLAG](state, flag) {
         state.baseDataReady = flag;
+    },
+    [UPDATE_TREE_ITEMS](state, payload) {
+        state.treeItems = payload;
     }
 };
 
@@ -54,6 +59,14 @@ const actions = {
         return Promise.all(depInfo).then(() => {
             // 基础信息准备完成标识
             commit(UPDATE_BASE_FLAG, true);
+        });
+    },
+    // 获取tree组件items
+    getTreeItems({ commit }) {
+        return getTreeItems().then((res) => {
+            let items = []
+            items.push(res.data)
+            commit(UPDATE_TREE_ITEMS, items);
         });
     }
 };

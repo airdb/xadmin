@@ -16,8 +16,27 @@
         </div>
     </div>
 </template>
+
 <script>
+import NvFooter from "./footer.vue";
+import headerConfig from "../header";
+import Header from "./header.vue";
+import Tree from "../../demo/tree";
+
 export default {
-    name: 'NvHeader'
+    name: 'NvHeader',
+    created() {
+        this.headerConf = headerConfig;
+    },
+    components: {
+        NvFooter,
+        Header,
+        Tree,
+    },
+    data() {
+        return {
+            headerConf: null,
+        };
+    },
 };
 </script>
