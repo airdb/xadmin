@@ -4,7 +4,7 @@
             :columns="columns"
             :action="action"
             :pagination="pagination"
-            url="https://scf.baobeihuijia.com/test/airdb/v1/noah/list"
+            url="/airdb/v1/noah/list"
             method="get"
             :rowSelect="true"
             :title="title"

@@ -57,8 +57,8 @@ export default {
     },
     login: {
         hasLogin: true,
-        url: 'https://scf.baobeihuijia.com/test/airdb/v1/noah/user',
-        logout: 'https://scf.baobeihuijia.com/test/airdb/v1/noah/user'
+        url: '/airdb/v1/noah/user',
+        logout: '/airdb/v1/noah/user'
     },
     type: 'header',
     separator: '/'
