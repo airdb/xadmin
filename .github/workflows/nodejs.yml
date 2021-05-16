@@ -27,7 +27,7 @@ jobs:
       run: |
         cd noahv
         #sed -i 's@/static/@/xadmin/static/@g' index.html
-        echo xadmin.airdb.io > CNAME
+        echo noah.airdb.io > CNAME
         git init
         git config user.name "airdb-bot"
         git config user.email "airdb-bot@airdb.com"

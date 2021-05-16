@@ -4,7 +4,7 @@
             :items="items"
             :columns="columns"
             :action="action"
-            url="/api/demo/table/filter/get"
+            url="/airdb/v1/noah/list"
             method="get"
             :pagination="pagination"
         />
