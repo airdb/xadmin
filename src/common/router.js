@@ -5,20 +5,8 @@ export default [
     /* eslint-disable no-undef */
     // Keep this line if you want auto add router by noahv create
     {
-        component: r => require.ensure([], () => r(require('src/demo/login/login')), 'login'),
-        path: '/login'
-    },
-    {
-        component: r => require.ensure([], () => r(require('src/bbs/tree')), 'bbs/tree'),
-        path: '/bbs/tree'
-    },
-    {
-        component: r => require.ensure([], () => r(require('src/bbs/list')), 'bbs/list'),
-        path: '/bbs/list'
-    },
-    {
-        component: r => require.ensure([], () => r(require('src/bbs/dashboard')), 'bbs/dashboard'),
-        path: '/bbs/dashboard'
+        component: r => require.ensure([], () => r(require('src/demo/tree')), 'demo/tree'),
+        path: 'demo/tree'
     },
     {
         component: r => require.ensure([], () => r(require('src/demo/chart/trend')), 'demo/chart/trend'),

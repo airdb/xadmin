@@ -5,62 +5,61 @@
 export default {
     header: [
         {
-            label: "论坛数据",
-            key: "bbs",
+            label: '模板示例',
+            key: 'tplDemo',
             children: [
                 {
-                    label: "分类信息",
-                    key: "bbs/list",
-                    link: "bbs/list"
+                    label: '表格示例',
+                    key: 'tableDemo',
+                    link: 'tableDemo'
                 },
                 {
-                    label: "信息",
-                    key: "formDemo",
-                    link: "formDemo"
+                    label: '表单示例',
+                    key: 'formDemo',
+                    link: 'formDemo'
                 },
                 {
-                    label: "筛选表格示例",
-                    key: "filterTableDemo",
-                    link: "filterTableDemo"
+                    label: '筛选表格示例',
+                    key: 'filterTableDemo',
+                    link: 'filterTableDemo'
                 }
             ]
         },
         {
-            label: "图表示例",
-            key: "chart",
+            label: '图表示例',
+            key: 'chart',
             children: [
                 {
-                    label: "图表示例",
-                    key: "chartDemo",
-                    link: "chartDemo"
+                    label: '图表示例',
+                    key: 'chartDemo',
+                    link: 'chartDemo'
                 },
                 {
-                    label: "时序趋势图示例",
-                    key: "demo/chart/trend",
+                    label: '时序趋势图示例',
+                    key: 'demo/chart/trend',
                     selected: true,
-                    link: "demo/chart/trend"
+                    link: 'demo/chart/trend'
                 }
             ]
         },
         {
-            label: "使用文档",
-            linkTarget: "https://baidu.github.io/NoahV/#/guide/about"
+            label: '使用文档',
+            linkTarget: 'https://baidu.github.io/NoahV/#/guide/about'
         }
     ],
-    hasBread: false,
+    hasBread: true,
     logo: {
         // 是否需要logo
-        hasLogo: false,
-        title: "Airdb",
+        hasLogo: true,
+        title: 'NoahV',
         // eslint-disable-next-line no-undef
-        // src: require('common/assets/img/logo.png')
-        src: require("common/assets/img/favicon.ico")
+        src: require('common/assets/img/logo.png')
     },
     login: {
         hasLogin: true,
-        url: "https://bbhj.airdb.io/release/oauth2/api/user",
-        logout: "https://bbhj.airdb.io/release/oauth2/api/logout"
+        url: '/airdb/v1/noah/user',
+        logout: '/airdb/v1/noah/user'
     },
-    type: "header",
-    separator: "/"
+    type: 'header',
+    separator: '/'
 };

@@ -59,7 +59,6 @@
 
 <script>
 import headerLink from "./headerLink";
-import { eventBus } from "../../../tools/eventBus";
 
 export default {
   name: "headerLink",

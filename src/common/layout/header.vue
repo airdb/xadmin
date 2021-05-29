@@ -8,15 +8,12 @@
           <headerLink :item="item" :parent="null"></headerLink>
         </MenuItem>
       </Menu>
-      <Login :login="header.login"></Login>
     </div>
   </div>
 </template>
 
 <script>
 import headerLink from "./header/headerLink";
-import Login from "./header/login";
-import Logo from "./header/logo";
 
 export default {
   props: ["headerConf", "logo"], //or header-conf
@@ -25,8 +22,6 @@ export default {
   },
   components: {
     headerLink,
-    Login,
-    Logo,
   },
   computed: {
     header() {
