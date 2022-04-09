@@ -19,7 +19,7 @@
     "babel-polyfill": "^6.26.0",
     "codemirror": "5.58.2",
     "iview": "^3.3.0",
-    "moment": "^2.24.0 ",
+    "moment": "^2.29.2",
     "noahv-component": "^1.0.13",
     "noahv-core": "^1.0.5",
     "noahv-mockup": "^1.0.3",
