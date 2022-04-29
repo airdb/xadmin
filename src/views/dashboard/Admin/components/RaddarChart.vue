@@ -67,12 +67,12 @@ const initChart = () => {
         }
       },
       indicator: [
-        { name: 'Sales', max: 10000 },
-        { name: 'Administration', max: 20000 },
-        { name: 'Information Technology', max: 20000 },
-        { name: 'Customer Support', max: 20000 },
-        { name: 'Development', max: 20000 },
-        { name: 'Marketing', max: 20000 }
+        { name: '公益时长', max: 10000 },
+        { name: '影响力', max: 20000 },
+        { name: '参与项目', max: 20000 },
+        { name: '主导项目', max: 20000 },
+        { name: '社区运营', max: 20000 },
+        { name: '软件研发', max: 20000 }
       ]
     },
     legend: {
