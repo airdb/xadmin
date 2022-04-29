@@ -30,7 +30,7 @@
           <svg-icon icon-class="money" class-name="card-panel-icon" />
         </div>
         <div class="card-panel-description">
-          <div class="card-panel-text">团队人数</div>
+          <div class="card-panel-text">我的贡献</div>
           <span class="card-panel-num">42</span>
           <!--<count-to :start-val="0" :end-val="9280" :duration="3200" class="card-panel-num" />-->
         </div>
@@ -42,7 +42,7 @@
           <svg-icon icon-class="shopping" class-name="card-panel-icon" />
         </div>
         <div class="card-panel-description">
-          <div class="card-panel-text">项目数</div>
+          <div class="card-panel-text">参与项目</div>
           <span class="card-panel-num">3</span>
           <!-- <CountTo :start-val="0" :end-val="13600" class="card-panel-num" />-->
         </div>
