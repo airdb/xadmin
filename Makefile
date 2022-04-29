@@ -2,7 +2,7 @@ install:
 	pnpm i
 dev:
 	pnpm run dev
-prod:
+build:
 	pnpm run build
 
 preview:

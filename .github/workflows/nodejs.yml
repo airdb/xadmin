@@ -21,11 +21,11 @@ jobs:
         make build
     - name: gh-pages
       run: |
-        #cd noahv
+        cd dist
         #sed -i 's@/static/@/xadmin/static/@g' index.html
         #echo noah.airdb.io > CNAME
         git init
-        git config user.name "airdb-bot"
+        git config user.name "xairdb"
         git config user.email "airdb-bot@airdb.com"
         git add -A
         git commit -m "Auto Update by actions"
