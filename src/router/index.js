@@ -52,6 +52,34 @@ export const constantRoutes = [{
         }]
     },
     {
+        path: '/teamwork',
+        component: Layout,
+        meta: { title: '团队协作', icon: 'guide' },
+        alwaysShow: true,
+        children: [{
+                path: 'crud',
+                component: () =>
+                    import ('@/views/crud'),
+                //name: 'crud',
+                meta: { title: '值班' }
+            },
+            {
+                path: 'import-export',
+                component: () =>
+                    import ('@/views/crud/Vci.vue'),
+                // name: 'ImportExport',
+                meta: { title: '周报' }
+            },
+            {
+                path: 'img-address-packing',
+                component: () =>
+                    import ('@/views/crud/ImgAddressPacking.vue'),
+                //  name: 'ImgAddressPacking',
+                meta: { title: 'ImgAdd Pack' }
+            }
+        ]
+    },
+    {
         path: '/setting-switch',
         component: Layout,
         children: [{
