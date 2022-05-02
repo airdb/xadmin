@@ -6,7 +6,7 @@
 
 <script setup>
 const callbackUrl = 'http://localhost:5006/callback'
-const authUrl = `https://airdb.net/login/oauth/authorize?client_id=4c00382773a7345f9d37&response_type=code&redirect_uri=${encodeURIComponent(callbackUrl)}&scope=read&state=app-bbhj`
+const authUrl = `https://sso.airdb.net/login/oauth/authorize?client_id=4c00382773a7345f9d37&response_type=code&redirect_uri=${encodeURIComponent(callbackUrl)}&scope=read&state=app-bbhj`
 </script>
 
 <style lang="scss" scoped>
