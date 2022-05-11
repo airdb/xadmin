@@ -1,2 +1,2 @@
-import component from './CRUD.vue'
+import component from './onduty.vue'
 export default component
