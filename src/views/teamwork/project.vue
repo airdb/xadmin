@@ -47,14 +47,17 @@
       @selection-change="handleSelectionChange"
     >
       <el-table-column type="selection" align="center" width="50" />
-      <el-table-column align="center" prop="letter" label="week number" width="80" />
-      <el-table-column align="center" prop="name" label="本周值班" min-width="100" />
-      <el-table-column align="center" prop="image" label="下周值班" min-width="100">
+      <el-table-column align="center" prop="letter" label="ID" width="80" />
+      <el-table-column align="center" prop="name" label="Project" min-width="100" />
+      <el-table-column align="center" prop="letter" label="Status" width="80" />
+      <el-table-column align="center" prop="image" label="Milestone" min-width="100">
         <template #default="{ row }">
           <img :src="row.image" class="widthPx-120 heightPx-120" style="border-radius: 10px" />
         </template>
       </el-table-column>
-      <el-table-column align="center" prop="seq" label="score" width="80" />
+      <el-table-column align="center" prop="seq" label="Member" width="80" />
+      <el-table-column align="center" prop="" label="This Week" width="80" />
+      <el-table-column align="center" prop="seq" label="Next Week" width="80" />
       <el-table-column align="center" prop="createTime" label="创建时间" width="140" />
       <el-table-column align="center" prop="updateTime" label="更新时间" width="140" />
       <!--点击操作-->
