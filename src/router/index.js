@@ -46,6 +46,27 @@ export const constantRoutes = [
     ]
   },
   {
+    path: '/report',
+    component: Layout,
+    name: 'report',
+    redirect: '/report/member',
+    meta: { title: 'Report', icon: 'bug' },
+    children: [
+      {
+        path: 'member',
+        component: () => import('@/views/report/member/member.vue'),
+        name: 'report_member',
+        meta: { title: 'weekly member report' }
+      },
+      {
+        path: 'project',
+        component: () => import('@/views/report/project/App.vue'),
+        name: 'report_project',
+        meta: { title: 'weekly project report' }
+      }
+    ]
+  },
+  {
     path: '/setting-switch',
     component: Layout,
     children: [
