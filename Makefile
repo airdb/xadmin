@@ -10,3 +10,4 @@ preview:
 
 lint:
 	pnpm run lint
+
