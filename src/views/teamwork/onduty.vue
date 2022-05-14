@@ -49,11 +49,7 @@
       <el-table-column type="selection" align="center" width="50" />
       <el-table-column align="center" prop="letter" label="week number" width="80" />
       <el-table-column align="center" prop="name" label="本周值班" min-width="100" />
-      <el-table-column align="center" prop="image" label="下周值班" min-width="100">
-        <template #default="{ row }">
-          <img :src="row.image" class="widthPx-120 heightPx-120" style="border-radius: 10px" />
-        </template>
-      </el-table-column>
+      <el-table-column align="center" prop="next" label="下周值班" min-width="100" />
       <el-table-column align="center" prop="seq" label="score" width="80" />
       <el-table-column align="center" prop="createTime" label="创建时间" width="140" />
       <el-table-column align="center" prop="updateTime" label="更新时间" width="140" />
@@ -109,6 +105,8 @@ import { Delete, FolderAdd } from '@element-plus/icons-vue'
 /*1.初始化引入和实例化*/
 import settings from '@/settings'
 import CRUDForm from './CRUDForm.vue'
+import axiosReq from '@/utils/mockAxiosReq' // NOTE: 启用 Mock, 删除这里将不启用
+
 onActivated(() => {
   console.log('onActivated')
 })
