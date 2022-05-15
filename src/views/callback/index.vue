@@ -12,6 +12,7 @@
 <script setup lanf="ts">
 import { ElMessage } from 'element-plus'
 import { setToken } from '@/utils/auth'
+import { getCallback } from '@/api/passport'
 
 const route = useRoute()
 const router = useRouter()
@@ -20,18 +21,23 @@ watch(
   () => route.query,
   (query) => {
     if (query && query.code) {
-      login(query.code)
+      login(query.code, query.state)
     }
   },
   { immediate: true }
 )
 
-function login(token) {
-  setToken(token)
-  ElMessage({ message: '登录成功', type: 'success' })
-  setTimeout(() => {
-    router.push('/')
-  }, 1500)
+function login(code, state) {
+  getCallback(code, state).then(response => {
+    console.log(response)
+    setToken(response.token)
+    ElMessage({ message: '登录成功', type: 'success' })
+    setTimeout(() => {
+      router.push('/')
+    }, 1500)
+  }).catch(e => {
+    console.log(e)
+  })
 }
 </script>
 

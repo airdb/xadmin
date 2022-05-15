@@ -4,18 +4,21 @@
   </div>
 </template>
 
-<script>
-import { getPreset } from '@/api/auth'
+<script setup>
+import { getPreset } from '@/api/passport'
 
-export default {
-  setup(props, context) {
-    onMounted(() => {
-      getPreset().then((resp) => {
-        console.log(resp)
-      })
-    })
-  }
-}
+const state = reactive({
+  authUrl: "",
+})
+
+onBeforeMount(() => {
+  getPreset(window.location.origin + '/callback').then((response) => {
+    state.authUrl = response.url
+  })
+})
+
+//导出属性到页面中使用
+const { authUrl } = toRefs(state)
 </script>
 
 <style lang="scss" scoped>
