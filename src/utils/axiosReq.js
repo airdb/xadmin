@@ -61,7 +61,7 @@ service.interceptors.response.use(
       setToken(updateToken)
     }
     const successCode = '0,200,20000'
-    if (successCode.includes(code)) {
+    if (successCode.includes(code) || code == null) {
       return res.data
     } else {
       if (code === 403) {

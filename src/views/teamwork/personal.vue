@@ -21,43 +21,29 @@
           <el-input v-model="searchForm.name" class="widthPx-150" placeholder="用户名" />
         </el-form-item>
         <el-form-item label-width="0px" label="" prop="createTime" label-position="left">
-          <el-date-picker
-            v-model="startEndArr"
-            type="datetimerange"
-            format="YYYY-MM-DD"
-            value-format="YYYY-MM-DD HH:mm:ss"
-            class="widthPx-250"
-            range-separator="-"
-            start-placeholder="开始日期"
-            end-placeholder="结束日期"
-            @change="dateTimePacking"
-          />
+          <el-date-picker v-model="startEndArr" type="datetimerange" format="YYYY-MM-DD"
+            value-format="YYYY-MM-DD HH:mm:ss" class="widthPx-250" range-separator="-" start-placeholder="开始日期"
+            end-placeholder="结束日期" @change="dateTimePacking" />
         </el-form-item>
       </el-form>
       <!--查询按钮-->
       <el-button type="primary" @click="searchBtnClick">查询</el-button>
     </div>
     <!--表格和分页-->
-    <el-table
-      id="resetElementDialog"
-      ref="refuserTable"
-      :height="`calc(100vh - ${settings.delWindowHeight})`"
-      border
-      :data="usertableData"
-      @selection-change="handleSelectionChange"
-    >
+    <el-table id="resetElementDialog" ref="refuserTable" :height="`calc(100vh - ${settings.delWindowHeight})`" border
+      :data="listData" :span-method="objectSpanMethod" @selection-change="handleSelectionChange">
       <el-table-column type="selection" align="center" width="50" />
-      <el-table-column align="center" prop="letter" label="姓名" width="80" />
-      <el-table-column align="center" prop="name" label="Project" min-width="100" />
-      <el-table-column align="center" prop="letter" label="Status" width="80" />
-      <el-table-column align="center" prop="image" label="Milestone" min-width="100">
-        <template #default="{ row }">
+      <el-table-column align="center" prop="pid" label="姓名" width="80" />
+      <el-table-column align="center" prop="project" label="Project" min-width="100" />
+      <el-table-column align="center" prop="status" label="Status" width="80" />
+      <el-table-column align="center" prop="project_milestone" label="Milestone" min-width="100">
+        <!-- <template #default="{ row }">
           <img :src="row.image" class="widthPx-120 heightPx-120" style="border-radius: 10px" />
-        </template>
+        </template> -->
       </el-table-column>
-      <el-table-column align="center" prop="seq" label="Member" width="80" />
-      <el-table-column align="center" prop="" label="This Week" width="80" />
-      <el-table-column align="center" prop="seq" label="Next Week" width="80" />
+      <el-table-column align="center" prop="developer" label="Member" width="80" />
+      <el-table-column align="center" prop="this_week" label="This Week" min-width="100" />
+      <el-table-column align="center" prop="next_week" label="Next Week" min-width="100" />
       <el-table-column align="center" prop="createTime" label="创建时间" width="140" />
       <el-table-column align="center" prop="updateTime" label="更新时间" width="140" />
       <!--点击操作-->
@@ -72,15 +58,9 @@
 
     <!--分页-->
     <div class="block columnCC mt-2">
-      <el-pagination
-        :current-page="pageNum"
-        :page-sizes="[10, 20, 50, 100]"
-        :page-size="pageSize"
-        layout="total, sizes, prev, pager, next, jumper"
-        :total="totalPage"
-        @size-change="handleSizeChange"
-        @current-change="handleCurrentChange"
-      />
+      <el-pagination :current-page="pageNum" :page-sizes="[10, 20, 50, 100]" :page-size="pageSize"
+        layout="total, sizes, prev, pager, next, jumper" :total="totalPage" @size-change="handleSizeChange"
+        @current-change="handleCurrentChange" />
     </div>
     <!--详情-->
     <el-dialog v-model="detailDialog" :title="dialogTitle" width="500px" :close-on-click-modal="false">
@@ -104,7 +84,90 @@
 </template>
 <script>
 export default {
-  name: 'Brand'
+  name: 'myNeedDeal',
+  data() {
+    return {
+      rowList: [],
+      spanArr: [],
+      position: 0,
+      listData: []
+    }
+  },
+
+  methods: {
+    queryData() {//查询操作
+      this.listData = [
+        {
+          id: '1',
+          pid: '1',
+          project: '项目申报',
+          status: '进行中',
+          project_milestone: '5月10提交材料',
+          developer: 'dean(PIC)',
+          this_week: '已经完成demo',
+          next_week: '更新内容，初步review'
+        },
+        {
+          id: '2',
+          pid: '1',
+          project: '项目申报',
+          status: '进行中',
+          project_milestone: '5月10提交材料',
+          developer: 'lucy',
+          this_week: '已更新part1',
+          next_week: '更新part2'
+        },
+        {
+          id: '3',
+          pid: '1',
+          project: '项目申报',
+          status: '进行中',
+          project_milestone: '5月10提交材料',
+          developer: 'lily',
+          this_week: '已更新part3',
+          next_week: '更新part2'
+        }
+      ];
+      this.rowspan()
+    },
+    rowspan() {
+      this.listData.forEach((item, index) => {
+        if (index === 0) {
+          this.spanArr.push(1);
+          this.position = 0;
+        } else {
+          if (this.listData[index].pid === this.listData[index - 1].pid) {
+            this.spanArr[this.position] += 1;
+            this.spanArr.push(0);
+          } else {
+            this.spanArr.push(1);
+            this.position = index;
+          }
+        }
+      })
+    },
+    objectSpanMethod({ row, column, rowIndex, columnIndex }) {  //表格合并行
+      if (columnIndex === 0) {
+        const _row = this.spanArr[rowIndex];
+        const _col = _row > 0 ? 1 : 0;
+        return {
+          rowspan: _row,
+          colspan: _col
+        }
+      }
+      if (columnIndex === 1 || columnIndex === 2 || columnIndex === 3 || columnIndex === 4) {
+        const _row = this.spanArr[rowIndex];
+        const _col = _row > 0 ? 1 : 0;
+        return {
+          rowspan: _row,
+          colspan: _col
+        }
+      }
+    }
+  },
+  mounted() {
+    this.queryData();
+  }
 }
 </script>
 <script setup>
@@ -112,6 +175,7 @@ import { Delete, FolderAdd } from '@element-plus/icons-vue'
 /*1.初始化引入和实例化*/
 import settings from '@/settings'
 import CRUDForm from './CRUDForm.vue'
+
 onActivated(() => {
   console.log('onActivated')
 })
@@ -199,7 +263,7 @@ const multiDelBtnClick = () => {
         selectPageReq()
       })
     })
-    .catch(() => {})
+    .catch(() => { })
 }
 let deleteByIdReq = (id) => {
   return axiosReq({
@@ -218,7 +282,7 @@ let tableDelClick = (row) => {
         elMessage(`【${row.name}】删除成功`)
       })
     })
-    .catch(() => {})
+    .catch(() => { })
 }
 //添加和修改
 let showFrom = ref(false)
@@ -261,6 +325,7 @@ let getDetailByIdReq = (id) => {
     method: 'get'
   })
 }
+
 </script>
 
 <style scoped lang="scss">

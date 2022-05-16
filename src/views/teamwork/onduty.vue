@@ -48,21 +48,15 @@
     <br />
 
     <!--表格和分页-->
-    <el-table
-      id="resetElementDialog"
-      ref="refuserTable"
-      :height="`calc(100vh - ${settings.delWindowHeight})`"
-      border
-      :data="usertableData"
-      @selection-change="handleSelectionChange"
-    >
+    <el-table id="resetElementDialog" ref="refuserTable" :height="`calc(100vh - ${settings.delWindowHeight})`" border
+      :data="listData" @selection-change="handleSelectionChange">
       <el-table-column type="selection" align="center" width="50" />
-      <el-table-column align="center" prop="letter" label="week number" width="80" />
-      <el-table-column align="center" prop="name" label="本周值班" min-width="100" />
-      <el-table-column align="center" prop="image" label="下周值班" min-width="100">
-        <template #default="{ row }">
-          <img :src="row.image" class="widthPx-120 heightPx-120" style="border-radius: 10px" />
-        </template>
+      <el-table-column align="center" prop="week" label="week number" width="80" />
+      <el-table-column align="center" prop="createdBy" label="本周值班" min-width="100" />
+      <el-table-column align="center" prop="createdBy" label="下周值班" min-width="100">
+        <!-- <template #default="{ row }"> -->
+          <!-- <img :src="row.image" class="widthPx-120 heightPx-120" style="border-radius: 10px" /> -->
+        <!-- </template> -->
       </el-table-column>
       <el-table-column align="center" prop="seq" label="score" width="80" />
       <el-table-column align="center" prop="createTime" label="创建时间" width="140" />
@@ -111,7 +105,31 @@
 </template>
 <script>
 export default {
-  name: 'Brand'
+  name: 'Brand',
+  data() {
+    return {
+      listData: []
+    }
+  },
+  methods: {
+    queryData() {//查询操作
+    let that = this;
+      let reqConfig = {
+        url: 'https://apis.airdb.net/v1/teamwork/onduty',
+        //url: '/integration-front/brand/selectPage',
+        method: 'get',
+        data: {},
+        isParams: true
+      }
+      axiosReq(reqConfig).then((resData) => {
+        that.listData = resData.schedule
+        console.log(resData.schedule)
+      })
+    }
+  },
+  mounted() {
+    this.queryData();
+  }
 }
 </script>
 <script setup>
