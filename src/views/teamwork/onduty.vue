@@ -37,6 +37,16 @@
       <!--查询按钮-->
       <el-button type="primary" @click="searchBtnClick">查询</el-button>
     </div>
+    <p>Notice:</p>
+    值班会议主持
+    <br />
+    - 1. 每周六晚 20:00 例会
+    <br />
+    - 2. 每周项目进度汇报 - 使用项目周报功能
+    <br />
+    - 3. 每周定期网站备份，检查是否备份
+    <br />
+
     <!--表格和分页-->
     <el-table
       id="resetElementDialog"
