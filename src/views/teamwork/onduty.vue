@@ -59,7 +59,7 @@
         <!-- </template> -->
       </el-table-column>
       <el-table-column align="center" prop="seq" label="score" width="80" />
-      <el-table-column align="center" prop="createTime" label="创建时间" width="140" />
+      <el-table-column align="center" prop="createdAt" label="创建时间" width="140" />
       <el-table-column align="center" prop="updateTime" label="更新时间" width="140" />
       <!--点击操作-->
       <el-table-column fixed="right" align="center" label="操作" width="180">
