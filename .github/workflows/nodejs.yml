@@ -1,0 +1,34 @@
+name: Node
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: '16.15.0'
+    - name: npm install, build, and test
+      run: |
+        env
+        npm install -g pnpm
+        make install
+        make build
+    - name: gh-pages
+      run: |
+        cd dist
+        #sed -i 's@/static/@/xadmin/static/@g' index.html
+        #echo noah.airdb.io > CNAME
+        git init
+        git config user.name "xairdb"
+        git config user.email "airdb-bot@airdb.com"
+        git add -A
+        git commit -m "Auto Update by actions"
+        git push --force "https://${{ secrets.GithubBotToken }}@github.com/${GITHUB_REPOSITORY}" master:gh-pages
+      env:
+        CI: true

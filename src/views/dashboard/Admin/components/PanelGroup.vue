@@ -6,7 +6,7 @@
           <svg-icon icon-class="peoples" class-name="card-panel-icon" />
         </div>
         <div class="card-panel-description">
-          <div class="card-panel-text">New Visits</div>
+          <div class="card-panel-text">志愿者数</div>
           <span class="card-panel-num">102400</span>
           <!--<count-to :start-val="0" :end-val="102400" :duration="2600" class="card-panel-num" />-->
         </div>
@@ -18,8 +18,8 @@
           <svg-icon icon-class="message" class-name="card-panel-icon" />
         </div>
         <div class="card-panel-description">
-          <div class="card-panel-text">Messages</div>
-          <span class="card-panel-num">81212</span>
+          <div class="card-panel-text">帮助回家</div>
+          <span class="card-panel-num">9212</span>
           <!--<count-to :start-val="0" :end-val="81212" :duration="3000" class="card-panel-num" />-->
         </div>
       </div>
@@ -30,8 +30,8 @@
           <svg-icon icon-class="money" class-name="card-panel-icon" />
         </div>
         <div class="card-panel-description">
-          <div class="card-panel-text">Purchases</div>
-          <span class="card-panel-num">9280</span>
+          <div class="card-panel-text">我的贡献</div>
+          <span class="card-panel-num">42</span>
           <!--<count-to :start-val="0" :end-val="9280" :duration="3200" class="card-panel-num" />-->
         </div>
       </div>
@@ -42,8 +42,8 @@
           <svg-icon icon-class="shopping" class-name="card-panel-icon" />
         </div>
         <div class="card-panel-description">
-          <div class="card-panel-text">Shoppings</div>
-          <span class="card-panel-num">13600</span>
+          <div class="card-panel-text">参与项目</div>
+          <span class="card-panel-num">3</span>
           <!-- <CountTo :start-val="0" :end-val="13600" class="card-panel-num" />-->
         </div>
       </div>

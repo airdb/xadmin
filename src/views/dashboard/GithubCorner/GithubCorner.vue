@@ -1,6 +1,6 @@
 <template>
   <a
-    href="https://github.com/jzfai/vue3-admin-plus"
+    href="https://github.com/airdb/xadmin"
     target="_blank"
     class="github-corner"
     aria-label="View source on Github"
