@@ -101,7 +101,7 @@ const setting = {
      * vite.config.js base config
      * such as
      * */
-    viteBasePath: '/xadmin/'
+    viteBasePath: '/'
 }
 
 export default setting
