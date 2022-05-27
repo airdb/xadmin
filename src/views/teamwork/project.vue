@@ -52,20 +52,20 @@
         <el-table-column align="center" prop="projectName" label="Project" min-width="100" />
         <el-table-column align="center" prop="projectStatus" label="Status" width="80" />
         <el-table-column align="center" prop="projectMilestone" label="Milestone" min-width="100" />
-          
+
         <el-table-column align="center" label="Member" width="120">
           <template v-for="(item, ind) in tmp.taskProcess" :key="ind">
-            <tr>{{item.email}}</tr>
+            <tr>{{ item.email }}</tr>
           </template>
         </el-table-column>
         <el-table-column align="center" :prop="tmp.thisWeek" label="This Week" min-width="100">
           <template v-for="(item, ind) in tmp.taskProcess" :key="ind">
-            <tr>{{item.thisWeek}}</tr>
+            <tr>{{ item.thisWeek }}</tr>
           </template>
         </el-table-column>
         <el-table-column align="center" :prop="tmp.nextWeek" label="Next Week" min-width="100">
           <template v-for="(item, ind) in tmp.taskProcess" :key="ind">
-            <tr>{{item.nextWeek}}</tr>
+            <tr>{{ item.nextWeek }}</tr>
           </template>
         </el-table-column>
         <el-table-column align="center" prop="createTime" label="创建时间" width="80" />
@@ -165,7 +165,7 @@ export default {
 
       let that = this
       let reqConfig = {
-        url: 'https://apis.airdb.dev/v1/teamwork/project',
+        url: '/v1/teamwork/project',
         method: 'get',
         data: {}
       }
@@ -393,6 +393,3 @@ let getDetailByIdReq = (id) => {
   font-size: 16px;
 }
 </style>
-
-
-
