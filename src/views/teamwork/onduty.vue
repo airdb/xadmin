@@ -18,19 +18,16 @@
       <el-form ref="refsearchForm" :inline="true" class="demo-searchForm ml-2">
         <el-form-item label-width="0px" label="" prop="username" label-position="left">
           <!--  --c -->
-          <el-input v-model="searchForm.name" class="widthPx-150" placeholder="用户名" />
+          <el-input v-model="searchForm.name" class="widthPx-150" placeholder="Weeknum" />
         </el-form-item>
         <el-form-item label-width="0px" label="" prop="createTime" label-position="left">
           <el-date-picker
-            v-model="startEndArr"
-            type="datetimerange"
-            format="YYYY-MM-DD"
-            value-format="YYYY-MM-DD HH:mm:ss"
+            v-model="weeknumber"
+            type="week"
+            format="[Week] ww"
+            placeholder="Pick a week"
             class="widthPx-250"
-            range-separator="-"
-            start-placeholder="开始日期"
-            end-placeholder="结束日期"
-            @change="dateTimePacking"
+            @change="dateTimePackingWeeknum"
           />
         </el-form-item>
       </el-form>
@@ -53,19 +50,19 @@
       ref="refuserTable"
       :height="`calc(100vh - ${settings.delWindowHeight})`"
       border
-      :data="usertableData"
+      :data="listData"
       @selection-change="handleSelectionChange"
     >
       <el-table-column type="selection" align="center" width="50" />
-      <el-table-column align="center" prop="letter" label="week number" width="80" />
-      <el-table-column align="center" prop="name" label="本周值班" min-width="100" />
-      <el-table-column align="center" prop="image" label="下周值班" min-width="100">
-        <template #default="{ row }">
-          <img :src="row.image" class="widthPx-120 heightPx-120" style="border-radius: 10px" />
-        </template>
+      <el-table-column align="center" prop="week" label="week number" width="80" />
+      <el-table-column align="center" prop="createdBy" label="本周值班" min-width="100" />
+      <el-table-column align="center" prop="createdBy" label="下周值班" min-width="100">
+        <!-- <template #default="{ row }"> -->
+        <!-- <img :src="row.image" class="widthPx-120 heightPx-120" style="border-radius: 10px" /> -->
+        <!-- </template> -->
       </el-table-column>
       <el-table-column align="center" prop="seq" label="score" width="80" />
-      <el-table-column align="center" prop="createTime" label="创建时间" width="140" />
+      <el-table-column align="center" prop="createdAt" label="创建时间" width="140" />
       <el-table-column align="center" prop="updateTime" label="更新时间" width="140" />
       <!--点击操作-->
       <el-table-column fixed="right" align="center" label="操作" width="180">
@@ -111,7 +108,32 @@
 </template>
 <script>
 export default {
-  name: 'Brand'
+  name: 'Brand',
+  data() {
+    return {
+      listData: []
+    }
+  },
+  methods: {
+    queryData() {
+      //查询操作
+      let that = this
+      let reqConfig = {
+        url: '/v1/teamwork/onduty',
+        //url: '/integration-front/brand/selectPage',
+        method: 'get',
+        data: {},
+        isParams: true
+      }
+      axiosReq(reqConfig).then((resData) => {
+        that.listData = resData.schedule
+        console.log(resData.schedule)
+      })
+    }
+  },
+  mounted() {
+    this.queryData()
+  }
 }
 </script>
 <script setup>
@@ -138,6 +160,8 @@ let searchForm = reactive({
   letter: '',
   seq: ''
 })
+let weeknumber = 0
+
 onMounted(() => {
   selectPageReq()
 })
@@ -173,6 +197,10 @@ const dateTimePacking = (timeArr) => {
     searchForm.endTime = ''
   }
 }
+const dateTimePackingWeeknum = (timeArr) => {
+  weeknumber = 22
+}
+
 const searchBtnClick = () => {
   //此处要重置页数，也是常出的bug
   pageNum.value = 1

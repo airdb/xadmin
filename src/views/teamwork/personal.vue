@@ -1,3 +1,4 @@
+
 <template>
   <div class="scroll-y">
     <!--操作-->
@@ -47,7 +48,7 @@
       @selection-change="handleSelectionChange"
     >
       <el-table-column type="selection" align="center" width="50" />
-      <el-table-column align="center" prop="letter" label="姓名" width="80" />
+      <el-table-column align="center" prop="letter" label="ID" width="80" />
       <el-table-column align="center" prop="name" label="Project" min-width="100" />
       <el-table-column align="center" prop="letter" label="Status" width="80" />
       <el-table-column align="center" prop="image" label="Milestone" min-width="100">
@@ -253,6 +254,8 @@ let tableDetailClick = (row) => {
     detailDialog.value = true
   })
 }
+detailData.value = `{"msg":"操作成功!","flag":true,"code":20000,"data":{"total":1,"current":1,"hitCount":false,"pages":1,"size":10,"optimizeCountSql":true,"records":[{"image":"http://8.135.1.141:8080//group1/86501729/太阳.png","createTime":"2022-05-11 14:20:45","letter":"q","name":"qweqwe1111","updateTime":"2022-05-11 22:20:45","id":325680,"seq":1}],"searchCount":true,"orders":[]}}`
+console.log('xxxxxxx------detailData', detailData.value)
 let getDetailByIdReq = (id) => {
   return axiosReq({
     url: '/integration-front/brand/selectById',

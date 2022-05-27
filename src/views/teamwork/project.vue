@@ -37,37 +37,48 @@
       <!--查询按钮-->
       <el-button type="primary" @click="searchBtnClick">查询</el-button>
     </div>
-    <!--表格和分页-->
+    <!--表格和分页  :span-method="objectSpanMethod" -->
     <el-table
       id="resetElementDialog"
       ref="refuserTable"
       :height="`calc(100vh - ${settings.delWindowHeight})`"
       border
-      :data="usertableData"
+      :data="listData"
       @selection-change="handleSelectionChange"
     >
-      <el-table-column type="selection" align="center" width="50" />
-      <el-table-column align="center" prop="letter" label="ID" width="80" />
-      <el-table-column align="center" prop="name" label="Project" min-width="100" />
-      <el-table-column align="center" prop="letter" label="Status" width="80" />
-      <el-table-column align="center" prop="image" label="Milestone" min-width="100">
-        <template #default="{ row }">
-          <img :src="row.image" class="widthPx-120 heightPx-120" style="border-radius: 10px" />
-        </template>
-      </el-table-column>
-      <el-table-column align="center" prop="seq" label="Member" width="80" />
-      <el-table-column align="center" prop="" label="This Week" width="80" />
-      <el-table-column align="center" prop="seq" label="Next Week" width="80" />
-      <el-table-column align="center" prop="createTime" label="创建时间" width="140" />
-      <el-table-column align="center" prop="updateTime" label="更新时间" width="140" />
-      <!--点击操作-->
-      <el-table-column fixed="right" align="center" label="操作" width="180">
-        <template #default="{ row }">
-          <el-button type="text" size="small" @click="tableEditClick(row)">编辑</el-button>
-          <el-button type="text" size="small" @click="tableDetailClick(row)">详情</el-button>
-          <el-button type="text" size="small" @click="tableDelClick(row)">删除</el-button>
-        </template>
-      </el-table-column>
+      <template v-for="(tmp, index) in listData" :key="index">
+        <el-table-column type="selection" align="center" width="50" />
+        <!-- <el-table-column align="center" prop="pid" label="姓名" width="80" /> -->
+        <el-table-column align="center" prop="projectName" label="Project" min-width="100" />
+        <el-table-column align="center" prop="projectStatus" label="Status" width="80" />
+        <el-table-column align="center" prop="projectMilestone" label="Milestone" min-width="100" />
+
+        <el-table-column align="center" label="Member" width="120">
+          <template v-for="(item, ind) in tmp.taskProcess" :key="ind">
+            <tr>{{ item.email }}</tr>
+          </template>
+        </el-table-column>
+        <el-table-column align="center" :prop="tmp.thisWeek" label="This Week" min-width="100">
+          <template v-for="(item, ind) in tmp.taskProcess" :key="ind">
+            <tr>{{ item.thisWeek }}</tr>
+          </template>
+        </el-table-column>
+        <el-table-column align="center" :prop="tmp.nextWeek" label="Next Week" min-width="100">
+          <template v-for="(item, ind) in tmp.taskProcess" :key="ind">
+            <tr>{{ item.nextWeek }}</tr>
+          </template>
+        </el-table-column>
+        <el-table-column align="center" prop="createTime" label="创建时间" width="80" />
+        <el-table-column align="center" prop="updateTime" label="更新时间" width="80" />
+        <!--点击操作-->
+        <el-table-column fixed="right" align="center" label="操作" width="180">
+          <template #default="{ row }">
+            <el-button type="text" size="small" @click="tableEditClick(row)">编辑</el-button>
+            <el-button type="text" size="small" @click="tableDetailClick(row)">详情</el-button>
+            <el-button type="text" size="small" @click="tableDelClick(row)">删除</el-button>
+          </template>
+        </el-table-column>
+      </template>
     </el-table>
 
     <!--分页-->
@@ -104,7 +115,107 @@
 </template>
 <script>
 export default {
-  name: 'Brand'
+  name: 'myNeedDeal',
+  data() {
+    return {
+      listData: [],
+      testArr1: [],
+      testArr2: [],
+      testPosition1: 0,
+      testPosition2: 0
+    }
+  },
+
+  methods: {
+    queryData() {
+      //查询操作
+
+      // this.listData = [
+      //   {
+      //     id: '1',
+      //     pid: '1',
+      //     project: '项目申报',
+      //     status: '进行中',
+      //     project_milestone: '5月10提交材料',
+      //     developer: 'dean(PIC)',
+      //     this_week: '已经完成demo',
+      //     next_week: '更新内容，初步review'
+      //   },
+      //   {
+      //     id: '2',
+      //     pid: '1',
+      //     project: '项目申报',
+      //     status: '进行中',
+      //     project_milestone: '5月10提交材料',
+      //     developer: 'lucy',
+      //     this_week: '已更新part1',
+      //     next_week: '更新part2'
+      //   },
+      //   {
+      //     id: '3',
+      //     pid: '1',
+      //     project: '项目申报',
+      //     status: '进行中',
+      //     project_milestone: '5月10提交材料',
+      //     developer: 'lily',
+      //     this_week: '已更新part3',
+      //     next_week: '更新part2'
+      //   }
+      // ];
+
+      let that = this
+      let reqConfig = {
+        url: '/v1/teamwork/project',
+        method: 'get',
+        data: {}
+      }
+      axiosReq(reqConfig).then((resData) => {
+        that.listData = resData.project
+        console.log(resData.project)
+        console.log(resData.project[0].taskProcess)
+      })
+      this.rowspan(this.testArr1, this.testPosition1, 'productType')
+      this.rowspan(this.testArr2, this.testPosition2, 'amount')
+    },
+    rowspan(spanArr, position, spanName) {
+      this.listData.forEach((item, index) => {
+        if (index === 0) {
+          spanArr.push(1)
+          position = 0
+        } else {
+          if (this.listData[index][spanName] === this.listData[index - 1][spanName]) {
+            spanArr[position] += 1
+            spanArr.push(0)
+          } else {
+            spanArr.push(1)
+            position = index
+          }
+        }
+      })
+    },
+    objectSpanMethod({ row, column, rowIndex, columnIndex }) {
+      //表格合并行
+      if (columnIndex === 0) {
+        const _row = this.spanArr[rowIndex]
+        const _col = _row > 0 ? 1 : 0
+        return {
+          rowspan: _row,
+          colspan: _col
+        }
+      }
+      if (columnIndex === 1) {
+        const _row = this.spanArr[rowIndex]
+        const _col = _row > 0 ? 1 : 0
+        return {
+          rowspan: _row,
+          colspan: _col
+        }
+      }
+    }
+  },
+  mounted() {
+    this.queryData()
+  }
 }
 </script>
 <script setup>
@@ -112,6 +223,7 @@ import { Delete, FolderAdd } from '@element-plus/icons-vue'
 /*1.初始化引入和实例化*/
 import settings from '@/settings'
 import CRUDForm from './CRUDForm.vue'
+
 onActivated(() => {
   console.log('onActivated')
 })
@@ -156,6 +268,7 @@ let selectPageReq = () => {
   })
 }
 import tablePageHook from '@/hooks/useTablePage'
+import axiosReq from '@/utils/axiosReq'
 let { pageNum, pageSize, handleCurrentChange, handleSizeChange } = tablePageHook(selectPageReq)
 const dateTimePacking = (timeArr) => {
   if (timeArr && timeArr.length === 2) {
@@ -253,8 +366,6 @@ let tableDetailClick = (row) => {
     detailDialog.value = true
   })
 }
-detailData.value = `{"msg":"操作成功!","flag":true,"code":20000,"data":{"total":1,"current":1,"hitCount":false,"pages":1,"size":10,"optimizeCountSql":true,"records":[{"image":"http://8.135.1.141:8080//group1/86501729/太阳.png","createTime":"2022-05-11 14:20:45","letter":"q","name":"qweqwe1111","updateTime":"2022-05-11 22:20:45","id":325680,"seq":1}],"searchCount":true,"orders":[]}}`
-console.log('xxxxxxx------detailData', detailData.value)
 let getDetailByIdReq = (id) => {
   return axiosReq({
     url: '/integration-front/brand/selectById',
