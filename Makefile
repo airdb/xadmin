@@ -1,7 +1,9 @@
 install:
 	pnpm i
+
 dev:
 	pnpm run dev
+
 build:
 	pnpm run build
 
@@ -10,3 +12,4 @@ preview:
 
 lint:
 	pnpm run lint
+

@@ -53,7 +53,9 @@ service.interceptors.response.use(
     if (reqConfig.isDownLoadFile) {
       return res
     }
-    const { flag, msg, isNeedUpdateToken, updateToken, code } = res.data
+    const { flag, msg, isNeedUpdateToken, updateToken } = res.data
+    const code = res.data.code ?? res.status
+
     //更新token保持登录状态
     if (isNeedUpdateToken) {
       setToken(updateToken)
