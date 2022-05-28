@@ -18,12 +18,14 @@
         <sidebar-item v-for="route in routes" :key="route.path" :item="route" :base-path="route.path" />
       </el-menu>
     </el-scrollbar>
+    <p class="version">当前版本: {{ version }}</p>
   </div>
 </template>
 
 <script setup>
 import Logo from './Logo.vue'
 import SidebarItem from './SidebarItem.vue'
+import { version } from '../../../../package.json'
 //导入配置文件
 
 const appStore = useAppStore()
@@ -81,5 +83,17 @@ const activeMenu = computed(() => {
 
 .el-menu-vertical {
   width: $sideBarWidth;
+}
+
+.version {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0 auto 8px;
+  background-color: #304156;
+  font-size: 12px;
+  color: var(--el-text-color-placeholder);
+  text-align: center;
 }
 </style>
