@@ -46,7 +46,7 @@ specifiers:
   screenfull: 4.2.0
   scss: 0.2.4
   svg-sprite-loader: 6.0.11
-  tinymce: 4.9.11
+  tinymce: 5.10.0
   ts-jest: <27
   ts-node: 10.7.0
   tslib: ^2.4.0
@@ -82,7 +82,7 @@ dependencies:
   path-to-regexp: 6.2.1
   pinia: 2.0.13_jysiv6klzd54wx33q6ikcblrxe
   screenfull: 4.2.0
-  tinymce: 4.9.11
+  tinymce: 5.10.0
   vue: 3.2.33
   vue-i18n: 9.1.6_vue@3.2.33
   vue-router: 4.0.12_vue@3.2.33
@@ -7950,8 +7950,8 @@ packages:
     resolution: {integrity: sha512-fcwX4mndzpLQKBS1DVYhGAcYaYt7vsHNIvQV+WXMvnow5cgjPphq5CaayLaGsjRdSCKZFNGt7/GYAuXaNOiYCA==}
     dev: true
 
-  /tinymce/4.9.11:
-    resolution: {integrity: sha512-nkSLsax+VY5DBRjMFnHFqPwTnlLEGHCco82FwJF2JNH6W+5/ClvNC1P4uhD5lXPDNiDykSHR0XJdEh7w/ICHzA==}
+  /tinymce/5.10.0:
+    resolution: {integrity: sha512-SaqBK8GtTKYSsTfhKdN0+NrZRgmVWO+j3fvgzLjt0t/g0osNzRH5os8icm2Rv5HvaeTd4TpxetUuLE+R9yg/yg==}
     dev: false
 
   /tmpl/1.0.5:
