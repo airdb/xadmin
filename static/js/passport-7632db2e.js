@@ -1,0 +1,1 @@
+import{i as t}from"./index-e628df01.js";function a(a){return t({url:"/v1/passport/preset",method:"get",isParams:!0,data:{redirect_uri:a}})}function r(a,r){return t({url:"/v1/passport/callback",method:"get",isParams:!0,data:{code:a,state:r}})}export{r as a,a as g};
