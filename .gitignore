@@ -9,3 +9,6 @@ yarn*
 pnpm*
 .pnpm-debug.log
 .vscode
+
+# version 为 git 相关信息，自动生成不能够提交到代码库
+src/version.js

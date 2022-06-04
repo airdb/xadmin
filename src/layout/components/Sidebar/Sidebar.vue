@@ -18,14 +18,14 @@
         <sidebar-item v-for="route in routes" :key="route.path" :item="route" :base-path="route.path" />
       </el-menu>
     </el-scrollbar>
-    <p class="version">当前版本: {{ version }}</p>
+    <p class="version">{{ branch }} - {{ tag }}</p>
   </div>
 </template>
 
 <script setup>
 import Logo from './Logo.vue'
 import SidebarItem from './SidebarItem.vue'
-import { version } from '../../../../package.json'
+import { branch, tag } from '../../../version'
 //导入配置文件
 
 const appStore = useAppStore()

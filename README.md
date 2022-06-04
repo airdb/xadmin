@@ -10,10 +10,6 @@ Use eslint+prettier+gitHooks format and verification code to improve code standa
 
 Vite need Node.js >= 12.0.0。
 
-## 注意事项
-
-- 项目的版本使用 [package.json](./package.json) 中的 `version`，升级版本时需要修改
-
 ## Update log
 
 --- to look the doc
